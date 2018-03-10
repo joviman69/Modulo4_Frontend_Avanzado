@@ -1,7 +1,7 @@
 {
-  "name": "articles",
+  "name": "aRTICOLS",
   "version": "1.0.0",
-  "description": "",
+  "description": "Práctica módulo 4 Bootcamp Web Keepcoding",
   "main": "index.js",
   "scripts": {
     "webpack": "ENTORNO=desarrollo webpack",
@@ -11,7 +11,7 @@
     "json-server": "json-server --watch db.json --port 3001"
   },
   "keywords": [],
-  "author": "",
+  "author": "Jose Contamina",
   "license": "ISC",
   "devDependencies": {
     "babel-core": "^6.26.0",
@@ -37,8 +37,11 @@
   },
   "dependencies": {
     "animate.css": "^3.6.1",
+    "bootstrap": "^4.0.0",
     "font-awesome": "^4.7.0",
+    "jquery": "^3.3.1",
     "moment": "^2.20.1",
+    "popper.js": "^1.12.9",
     "pubsub-js": "^1.6.0",
     "reset-css": "^2.2.1"
   }
