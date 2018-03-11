@@ -28,14 +28,12 @@ export class ArticlesListController {
             html += `<article class="article">
             <a href="detail.html">
             <div class="article-pic">`
-            let reg = new RegExp("mp4$")
-            console.log(arti.media);
+            let reg = new RegExp("mp4$");
             if (reg.test(arti.media)) {
                 html += ` 
                 <video id="video" width="500" height="500" controls>
                     <source src="${arti.media}" type="video/mp4">
                 </video>`
-
             } 
             else {
                 html += ` 
@@ -50,10 +48,17 @@ export class ArticlesListController {
             </a>
             <div class="creation">
             <div class="article-date">Creado el ${moment(arti.date).format('DD/MM/YYYY HH:mm:ss')}</div>
-            <div class="author-pic">
-            <img src="${arti.authorPic}" alt="Foto de ${arti.authorPic}"></div>
-            </div>
+            <div class="author-pic">`
+            if (arti.authorPic == "") {
+                html += `<img src="./assets/img/nopic.png" alt="imagen predeterminada">`
+            } 
+            else {
+                html += ` 
+            <img src="${arti.authorPic}" alt="Foto de ${arti.authorPic}"></div>`
+            };
+            html += `     
             <div class="author">${arti.author}</div>
+            </div>
             <div> <i class="fas fa-heart"></i> <a href="detail.html"> <i class="fas fa-comments"></i></a>
             </div>
         </article>`
