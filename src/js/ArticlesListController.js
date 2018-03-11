@@ -5,15 +5,17 @@ export class ArticlesListController {
     constructor(selector, articlesService) {
         this.element = document.querySelector(selector);
         this.articlesService = articlesService;
-        
+            
     }
 
+    
+
     showLoadingMessage() {
-        this.element.innerHTML = '<div class="loadingr">Cargando artículos...</div>';
+        this.element.innerHTML = '<div class="loading">Cargando artículos...</div>';
     }
 
     showErrorMessage() {
-        this.element.innerHTML = '<div class="error">Error en la recuperacion de datos de JSON-SERVER</div>';
+        this.element.innerHTML = '<div class="error">Error en la recuperación de datos de JSON-SERVER</div>';
     }
 
     showBlankMessage() {
@@ -25,11 +27,24 @@ export class ArticlesListController {
         for (let arti of articles) {
             html += `<article class="article">
             <a href="detail.html">
-            <div class="article-pic">
-                <img src="${arti.media}" alt="Foto de ${arti.title}">
+            <div class="article-pic">`
+            let reg = new RegExp("mp4$")
+            console.log(arti.media);
+            if (reg.test(arti.media)) {
+                html += ` 
+                <video id="video" width="500" height="500" controls>
+                    <source src="${arti.media}" type="video/mp4">
+                </video>`
+
+            } 
+            else {
+                html += ` 
+                <img src="${arti.media}" alt="Foto de ${arti.title}">`
+                };
+            html += `     
             </div>
             <div class="article-content">
-                <div class="article-title">${arti.title}</div>
+                <div class="article-title"><h4>${arti.title}</h4></div>
                 <div class="article-text">${arti.text}</div>
             </div>
             </a>

@@ -5,6 +5,8 @@ import css from './scss/style.scss';
 import moment from 'moment';
 import { ArticlesService } from './js/ArticlesService';
 import { ArticlesListController } from './js/ArticlesListController';
+import { CommentsService } from './js/CommentsService';
+import { CommentsListController } from './js/CommentsListController';
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -18,4 +20,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
     //let formController = new FormController('.songs-form', songsService, PubSub);
 
+
+    
+});
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    
+    let commentsService = new CommentsService('http://localhost:3001/comments/');
+    
+    let commentsListController = new CommentsListController(".comments-list", commentsService);
+    commentsListController.loadComments();
+    
 });
