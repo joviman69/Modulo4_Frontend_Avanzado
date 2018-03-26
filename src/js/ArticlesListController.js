@@ -67,6 +67,10 @@ export class ArticlesListController {
     }
 
     loadArticles() {
+        if (!this.element) {
+            return
+        }
+        else {
         this.showLoadingMessage();
         this.articlesService.list().then(arti => {
             if (arti.length == 0) {
@@ -78,7 +82,7 @@ export class ArticlesListController {
             console.error("ERROR CON ARTICLES", error);
             this.showErrorMessage();
         });
-
+        }
     }
 
 }

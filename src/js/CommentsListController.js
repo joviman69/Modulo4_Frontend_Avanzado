@@ -35,6 +35,10 @@ export class CommentsListController {
     }
 
     loadComments() {
+        if (!this.element) {
+            return
+        }
+        else {
         this.showLoadingMessage();
         this.commentsService.list().then(come => {
             if (come.length == 0) {
@@ -46,7 +50,7 @@ export class CommentsListController {
             console.error("ERROR CON COMMENTS", error);
             this.showErrorMessage();
         });
-
+    }
     }
 
 }
