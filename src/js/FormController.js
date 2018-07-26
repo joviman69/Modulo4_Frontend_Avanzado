@@ -4,7 +4,7 @@ export class FormController {
     this.pubSub = pubSub;
     this.element = document.querySelector(selector);
     if (this.element != null) this.Listeners();
-    this.element.querySelector("button").disabled = true;
+    // this.element.querySelector("button").disabled = true;
   }
 
   Listeners() {

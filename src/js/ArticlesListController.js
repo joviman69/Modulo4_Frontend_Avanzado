@@ -26,46 +26,52 @@ export class ArticlesListController {
     let html = "";
     for (let arti of articles) {
       html += `<article class="article">
+            <div class="card"
             <a href="detail.html" style="text-decoration: none">
             <div class="article-pic">`;
       let reg = new RegExp("mp4$");
       if (reg.test(arti.media)) {
         html += ` 
-                <video id="video" width="500" height="500" controls>
+                <video class="card-img-top col-sm-8" id="video" width="500" height="500" controls>
                     <source src="${arti.media}" type="video/mp4">
                 </video>`;
       } else {
         html += ` 
-                <img src="${arti.media}" alt="Foto de ${arti.title}">`;
+                <img class="card-img-top col-sm-8" src="${
+                  arti.media
+                }" alt="Foto de ${arti.title}">`;
       }
       html += `     
             </div>
-            <div class="article-content">
-                <div class="article-title"><h4>${arti.title}</h4></div>
-                <div class="article-text">${arti.text}</div>
+            <div class="article-content card-body">
+                <div class="article-title"><h4 class="card-title">${
+                  arti.title
+                }</h4></div>
+                <div class="article-text card-text">${arti.text}</div>
             </div>
             </a>
-            <div class="creation">`;
+            `;
       let creado = Lib.calcDate(arti.date);
       html += `
-            <div class="article-date">${creado}</div>
-           
-           
-            <div class="author-pic">`;
+            <div class="article-date card-footer">
+            <small class="text-muted">${creado}</small><br>
+            `;
 
       if (arti.authorPic == "") {
-        html += `<img src="./assets/img/nopic.png" alt="imagen predeterminada">`;
+        html += `<img class="col-sm-1" src="./assets/img/nopic.png" alt="imagen predeterminada">`;
       } else {
         html += ` 
-            <img src="${arti.authorPic}" alt="Foto de ${
+            <img class="col-sm-1" src="${arti.authorPic}" alt="Foto de ${
           arti.authorPic
-        }"></div>`;
+        }">`;
       }
       html += `     
-            <div class="author">${arti.author}</div>
-            </div>
-            <div> <i class="fas fa-heart"></i> <a href="detail.html"> <i class="fas fa-comments"></i></a>
-            </div>
+            <div class="author">${arti.author}
+            
+            <i class="fas fa-heart"></i> <a href="detail.html"> <i class="fas fa-comments"></i></a>
+            <a href="detail.html" class="btn ">Ir al artículo</a>
+            
+            
         </article>`;
     }
     this.element.innerHTML = html;
